@@ -1,0 +1,9 @@
+﻿Variable Name,Description
+Temperature,The temperature reading from the device of the environment where the reading was taken
+Humidity,The Humidity reading from the device of the environment where the reading was taken
+MQ7_analog,The raw output value from the MQ7 sensor 
+MQ9_analog,The raw output value from the MQ9 sensor 
+MG811_analog,The raw output value from the MG811 sensor 
+MQ135_analog,The raw output value from the MQ135 sensor 
+device name,Name of the IoT device that took this reading
+CO2,Actual value of CO2 in ppm from a reference instrument
