@@ -1,6 +1,6 @@
-# Zindi Air Quality Prediction from Low-Cost IoT Devices
+# Air Quality Prediction from Low-Cost IoT Devices
 
-Welcome to the Zindi Air Quality Prediction project! This repository contains the solution for predicting CO2 levels using low-cost IoT devices. The project is part of a competition hosted by Zindi, where I achieved third place.
+Welcome to the Air Quality Prediction project! This repository contains the solution for predicting CO2 levels using low-cost IoT devices. The project is part of a hackathon hosted on Zindi, where I emerged third place.
 
 ## Table of Contents
 
