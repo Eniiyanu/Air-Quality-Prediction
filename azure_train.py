@@ -1,4 +1,4 @@
-from azureml.core import Workspace, Experiment, Dataset, Environment, ScriptRunConfig
+from azureml.core import Workspace, Experiment, Environment, ScriptRunConfig
 from azureml.core.authentication import InteractiveLoginAuthentication
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
@@ -10,7 +10,7 @@ workspace_name = "zindi"
 subscription_id = "1c85a07a-accf-4d11-af5a-3ec5f0b40b82"
 resource_group = "hackathon"
 
-# Get workspace
+# Authenticate and get workspace
 try:
     ws = Workspace.get(
         name=workspace_name,
@@ -23,7 +23,7 @@ except Exception as e:
     print("Could not find workspace")
     print("Error:", str(e))
 
-# Create compute target
+# Create (or find) compute target
 compute_name = "cpu-cluster"
 try:
     compute_target = ComputeTarget(workspace=ws, name=compute_name)
@@ -43,25 +43,23 @@ experiment_name = 'xgboost-co2-prediction'
 experiment = Experiment(workspace=ws, name=experiment_name)
 print("Created experiment:", experiment_name)
 
-# In azure_train.py, update the environment setup:
+# Define environment with required packages
 conda_deps = CondaDependencies()
-
-# Add required packages
 conda_deps.add_pip_package('pandas')
 conda_deps.add_pip_package('numpy')
 conda_deps.add_pip_package('scikit-learn')
 conda_deps.add_pip_package('xgboost')
 conda_deps.add_pip_package('optuna')
+conda_deps.add_pip_package('lightgbm')
+conda_deps.add_pip_package('catboost')
 
-
-# Create and configure the environment
 env = Environment('xgboost_env')
 env.python.conda_dependencies = conda_deps
 
-# Create the script config
+# Create script config
 src = ScriptRunConfig(
-    source_directory='.',  # Current directory
-    script='train.py',     # Your training script
+    source_directory='.',  # Directory containing the training script
+    script='train1.py',     # Training script
     compute_target=compute_target,
     environment=env
 )
