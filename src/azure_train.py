@@ -6,9 +6,9 @@ from azureml.core.conda_dependencies import CondaDependencies
 import os
 
 # Set your Azure workspace details
-workspace_name = "zindi"
-subscription_id = "1c85a07a-accf-4d11-af5a-3ec5f0b40b82"
-resource_group = "hackathon"
+workspace_name = os.environ.get("WORKSPACE_NAME")
+subscription_id = os.environ.get("SUBSCRIPTION_ID")
+resource_group = os.environ.get("RESOURCE_GROUP")
 
 # Authenticate and get workspace
 try:
